@@ -121,19 +121,40 @@ newArticle.appendChild(new1);
 const aside = document.querySelector("aside");
 aside.remove();
 // Elimina la característica "Gran melena" de la lista de características del león.
-const lionFeature = document.querySelector(".card[data-animal-type='land'] li");
+//const lionFeature = document.querySelector(".card[data-animal-type='land'] li");
 
-lionFeature.remove();
+//lionFeature.remove();
+
+
+const encabezados3 = document.querySelectorAll("article h3");
+const leonH3 = [...encabezados3].find((h3) => h3.textContent === "León");
+const leonCard = leonH3.parentElement;
+
+const leonFeatures = leonCard.querySelectorAll("ul.features li");
+leonFeatures[0].remove(); // Elimina el primer elemento de la lista (Gran melena)
+
 // Nivel 4: Mover Elementos y Eventos
 // Se combinan conceptos para reorganizar la página dinámicamente.
 
 // Mover Elementos:
 // Mueve la tarjeta del delfín para que aparezca antes que la del león dentro de la sección de mamíferos.
 // (Pista: usa insertBefore).
-
+const dolphinCard = leonCard.nextElementSibling;
+const cardContainer = leonCard.parentElement;
+cardContainer.insertBefore(dolphinCard, leonCard);
+//const lionCard = document.querySelector(".card[data-animal-type='land']");
+//const mammalsSection = document.querySelector("#mammals");
+//mammalsSection.insertBefore(dolphinCard, lionCard);
 // Ejercicio Combinado (Bonus):
 // Crea un botón button con el texto "Invertir Orden".
-
+function reverse() {
+    const sections = [...document.querySelectorAll("section")];
+    console.log(sections);
+    sections.reverse();
+    sections.forEach((section) => {
+        main.appendChild(section);
+    }, );
+}
 // Añade este botón justo después del <h1> principal.
 
 // Haz que, al hacer clic en el botón, el orden de las secciones (#mammals y #birds) se invierta.
