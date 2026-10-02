@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //1
+      let nombre = prompt("Introduce tu nombre aquí");
+
+      function saludo(nombre) {
+        return "Hola, " + nombre + "!";
+      }
+      console.log(saludo(nombre));
+    </script>
+    <script>
+      //2
+      function suma(num1, num2) {
+        let x;
+        return num1 + num2;
+      }
+      let num1 = parseInt(prompt("Introduce el primer número"));
+      let num2 = parseInt(prompt("Introduce el segundo número"));
+      alert("La suma de los dos sería " + suma(num1, num2));
+    </script>
+    <script>
+      //3
+
+      function mayor(num1, num2) {
+        if (num1 > num2) {
+          return num1 + " Es mayor que " + num2;
+        } else if (num2 > num1) {
+          return num2 + " Es mayor que " + num1;
+        } else {
+          return "Son iguales";
+        }
+      }
+      console.log(mayor(10, 8));
+    </script>
+    <script>
+      //4
+      function par(num1) {
+        if (num1 % 2 == 0) {
+          return num1 + " Es par ";
+        } else {
+          return num1 + " Es impar";
+        }
+      }
+      console.log(par(7));
+      console.log(par(6));
+    </script>
+    <script>
+      //5
+      function suma(array) {
+        return array.reduce((acumulador, actual) => acumulador + actual, 0);
+      }
+      console.log(suma([1, 2, 3, 4, 5]));
+    </script>
+    <script>
+      //6
+      function mayor(array) {
+        return Math.max(...array);
+      }
+      console.log(mayor([1, 2, 3, 4, 5152]));
+    </script>
+    <script>
+      //7
+      const SDLA = {
+        titulo: "El señor de los anillos",
+        autor: "J.R.R Tolkien",
+        paginas: 1178,
+      };
+      const HP1 = {
+        titulo: "Harry Potter",
+        autor: "J.Roaling",
+        paginas: 4224,
+      };
+
+      function libro(nombre) {
+        return (
+          "Titulo: " +
+          nombre.titulo +
+          " , Autor: " +
+          nombre.autor +
+          ", páginas: " +
+          nombre.paginas
+        );
+      }
+      console.log(libro(SDLA));
+      console.log(libro(HP1));
+    </script>
+    <script>
+      //8
+      const producto1 = { nombre: "tomate ", precio: " 3.99", stock: "300" };
+      const producto2 = { nombre: "agua ", precio: " 0.5", stock: "1000" };
+      const productos = { producto1 };
+      function mostarProductos(array) {
+        let resultado = "";
+        for (const clave in array) {
+          resultado = clave + " : " + array[clave] + " \n";
+        }
+        console.log(resultado);
+      }
+    </script>
+  </body>
+</html>
