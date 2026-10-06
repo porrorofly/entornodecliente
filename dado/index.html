@@ -1,12 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DADO</title>
     <script src="dado.js" defer></script>
 </head>
+<style>
+    #reglas {
+        float: left;
+        font-size: 20px;
+    }
+    
+    #juego,
+    #dinero,
+    #resultado {
+        width: 50%;
+        float: right;
+    }
+    
+    #dinero {
+        clear: both;
+    }
+</style>
 
 <body>
     <div id="reglas">
@@ -19,20 +36,36 @@
             <li>
                 Se parte con un dinero inicial de 10.
                 <ul>
-                    <li>Si el número sacado es mayor que el anterior, se gana lo apostado.</li>
-                    <li>Si el número sacado es igual o menor que el anterior, se pierde lo apostado.</li>
+                    <li>
+                        Si el número sacado es mayor que el anterior, se gana lo apostado.
+                    </li>
+                    <li>
+                        Si el número sacado es igual o menor que el anterior, se pierde lo apostado.
+                    </li>
                     <li>Se muestra ahora el nuevo valor en lugar delanterior.</li>
                 </ul>
             </li>
             <li>No se debería dejar apostar más del dinero disponible.</li>
-            <li>Si el dinero llega a 0. Debe indicar que se ha perdido e iniciar el juego.</li>
+            <li>
+                Si el dinero llega a 0. Debe indicar que se ha perdido e iniciar el juego.
+            </li>
         </ul>
     </div>
     <div id="juego">
         <h1>Juego Dado</h1>
-        <img src="./dice1.gif" alt="1">
-        <button onclick="play()">Lanzar</button>
+        <img src="./dice1.gif" alt="1" />
+
+
     </div>
+    <div id="dinero">
+        <h2>Dinero disponible: <span id="dinero-disponible">10</span></h2>
+        <p>Apuesta: <input type="number" id="apuesta" min="1" value="1" /></p>
+    </div>
+    <div id="resultado">
+        <h2>Resultado: <span id="resultado-texto"></span></h2>
+        <button onclick="play()">Sacar un número mayor</button>
+    </div>
+
 </body>
 
 </html>
