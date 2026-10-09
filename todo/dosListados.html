@@ -7,59 +7,65 @@
     <title>Document</title>
 </head>
 <style>
-    div {}
+    #container {
+        display: flex;
+        gap: 10;
+    }
+    
+    #listOrigin {
+        background-color: yellowgreen;
+        padding: 20px;
+    }
+    
+    #listDestiny {
+        background-color: rgb(189, 230, 216);
+        padding: 20px;
+    }
+    
+    .selected {
+        background-color: darkgreen;
+        color: white;
+        font-weight: bold;
+    }
 </style>
+<script src="dosListados.js" defer></script>
 
 <body>
     <h1>Dos listados</h1>
     <p>Crea dos listados.El primereo tiene una lista de elementos.Se pueden seleccionar al hacer clicl.Pulsando un botn pasan los seleccionados al otr0o listado</p>
-    <p><button onclick="pasarlo()">Pasarlo a otra lista</button></p>
 
-    <ul id="tabla1">
-        <li>Elemento1</li>
-        <li>Elemento2</li>
-        <li>Elemento3</li>
-        <li>Elemento4</li>
-        <li>Elemento5</li>
-        <li>Elemento6</li>
-        <li>Elemento7</li>
-        <li>Elemento8</li>
-        <li>Elemento9</li>
-        <li>Elemento10</li>
-        <li>Elemento11</li>
-        <li>Elemento12</li>
-        <li>Elemento13</li>
-        <li>Elemento14</li>
-        <li>Elemento15</li>
-        <li>Elemento16</li>
-        <li>Elemento17</li>
-        <li>Elemento18</li>
-        <li>Elemento19</li>
-        <li>Elemento20</li>
-    </ul>
-    <!--li{elemento$}*20*/-->>
-    <ul id="tabla2">
-        <li>elementos21</li>
-        <li>elementos22</li>
-        <li>elementos23</li>
-        <li>elementos24</li>
-        <li>elementos25</li>
-        <li>elementos26</li>
-        <li>elementos27</li>
-        <li>elementos28</li>
-        <li>elementos29</li>
-        <li>elementos210</li>
-        <li>elementos211</li>
-        <li>elementos212</li>
-        <li>elementos213</li>
-        <li>elementos214</li>
-        <li>elementos215</li>
-        <li>elementos216</li>
-        <li>elementos217</li>
-        <li>elementos218</li>
-        <li>elementos219</li>
-        <li>elementos220</li>
-    </ul>
+    <div id="container">
+        <ul id="listOrigin">
+            <li onclick="this.classList.toogle('selected')">Elemento1</li>
+            <li>Elemento2</li>
+            <li class=" selected ">Elemento3</li>
+            <li>Elemento4</li>
+            <li>Elemento5</li>
+            <li>Elemento6</li>
+            <li>Elemento7</li>
+            <li>Elemento8</li>
+            <li>Elemento9</li>
+            <li class="selected ">Elemento10</li>
+            <li>Elemento11</li>
+            <li>Elemento12</li>
+            <li>Elemento13</li>
+            <li>Elemento14</li>
+            <li>Elemento15</li>
+            <li>Elemento16</li>
+            <li>Elemento17</li>
+            <li>Elemento18</li>
+            <li>Elemento19</li>
+            <li>Elemento20</li>
+        </ul>
+
+        <!--li{elemento$}*20*/-->>
+        <ul id="listDestiny">
+
+        </ul>
+    </div>
+    <p><button onclick="changeElementLeft()">&lt;-</button></p>
+    Pasarlo a otra lista
+    <p><button onclick="changeElementRight()">-&gt;</button></p>
 </body>
 
 
