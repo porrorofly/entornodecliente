@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", () => {
+    botonesPersonas();
+});
+
 function limpiarPanel() {
     const campos = document.getElementById("personas")
     if (campos) {
@@ -33,6 +37,7 @@ function botonesPersonas() {
 
         nav.appendChild(boton);
     });
+
 }
 
 function mostrarPersona(persona) {
@@ -55,7 +60,17 @@ function mostrarPersona(persona) {
         const li = document.createElement("li");
         li.textContent = interes;
         ul.appendChild(li);
+
+
+
     });
+    const button = document.createElement("button")
+    button.textContent = "eliminar"
+    button.addEventListener('click', () => {
+        eliminar(persona.id);
+        mostrarListadoPersonas(PERSONAS)
+    });
+    divPersona.appendChild(button)
     divPersona.appendChild(ul)
     clase.appendChild(divPersona)
 }
@@ -86,9 +101,44 @@ function crearPersona() {
         edad = edadInp.value
         estudios = estudiosInp.value
         insertarPersona(PERSONAS, id, nombre, edad, estudios, intereses)
+        persona = buscarPersonaPorId(PERSONAS, id)
+            // PERSONAS.find(persona => persona.id === id)
     }
     nombreInp.value = ""
     edadInp.value = ""
     estudiosInp.value = ""
     interesesInp.value = ""
+    limpiarPanel()
+    mostrarPersona(persona)
+}
+
+function filtrarEdad() {
+    limpiarPanel()
+    const inputMinima = document.querySelector('input[name="minima"]');
+    const inputMaxima = document.querySelector('input[name="maxima"]');
+    if (!inputMinima || !inputMaxima) return;
+
+
+    const min = parseInt(inputMinima.value);
+    const max = parseInt(inputMaxima.value);
+
+
+    if (isNaN(min) || !inputMinima.value || isNaN(max) || !inputMaxima.value) {
+        alert("Introduce tanto la edad mínima como la máxima.");
+        return;
+    }
+
+
+    const listaFiltrada = filtrarPersonasPorEdad(PERSONAS, min, max);
+
+
+    mostrarListadoPersonas(listaFiltrada);
+}
+
+function eliminar(idElimianr) {
+    const index = PERSONAS.findIndex(persona => persona.id === idElimianr);
+    if (index !== -1) {
+        PERSONAS.splice(index, 1);
+    }
+
 }
