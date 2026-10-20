@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Eventos</h1>
+    <h2>Tres formas de crear eventos</h2>
+    <ol>
+        <li>Evento en línea <button onclick="console.log('Pulsado botón 1')">Botón 1</button></li>
+        <li>En la propiedad del elemento: <button id="boton2">Botón 2</button></li>
+        <li>Agregando EventListener <button id="boton3">Botón3</button></li>
+    </ol>
+    <script>
+        const boton2 = document.getElementById('boton2')
+        boton2.onclick = () => console.log('pulsando botón 2')
+
+
+        //boton2.onclick = () => console.log('pulsando botón 2')
+        /*  function mifuncion() {
+             console.log('pulsando botón 2')
+         } */
+
+        const boton3 = document.getElementById('boton3')
+        boton3.addEventListener('click', pulsarBoton)
+
+        function pulsarBoton() {
+            console.log('Pulsado botón3')
+        }
+        boton3.addEventListener('click', () => console.log('nueva función en botón 3'))
+    </script>
+
+    <h2>Objeto Event</h2>
+    <button id="boton4">Botón que lee el evento</button>
+    <div id="container" style="background-color: yellow;">Pasa el raton por encima</div>
+    <p>Al pulsar el boton 4 se muestra por la consola las propiedades del evento</p>
+    <script>
+        const boton4 = document.getElementById('boton4')
+        const container = document.getElementById('container');
+        // boton4.addEventListener('click', (event) => console.log("propiedades del evento", event))
+        boton4.addEventListener('click', leerEvento)
+        container.addEventListener('mouseover', leerEvento);
+
+        function leerEvento(evento) {
+            //  console.log("propiedades del evento", event)
+            console.log(event.type, event.target)
+            let elemento = event.target
+                //  elemento.remove()
+                //   event.target.remove()
+        }
+    </script>
+</body>
+
+
+</html>
