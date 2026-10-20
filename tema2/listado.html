@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    li {
+        background-color: darkcyan;
+        padding: 5px;
+        margin: 5px;
+    }
+</style>
+<!--li{elemento$}*20*/-->
+
+<body>
+    <ul>
+        <li>elemento1</li>
+        <li>elemento2</li>
+        <li>elemento3</li>
+        <li>elemento4</li>
+        <li>elemento5</li>
+        <li>elemento6</li>
+        <li>elemento7</li>
+        <li>elemento8</li>
+        <li>elemento9</li>
+        <li>elemento10</li>
+        <li>elemento11</li>
+        <li>elemento12</li>
+        <li>elemento13</li>
+        <li>elemento14</li>
+        <li>elemento15</li>
+        <li>elemento16</li>
+        <li>elemento17</li>
+        <li>elemento18</li>
+        <li>elemento19</li>
+        <li>elemento20</li>
+    </ul>
+    <script>
+      /*   const li = document.querySelectorAll('li')
+        li.forEach(li => li.addEventListener('mouseover', eliminar))
+
+        function eliminar(event) {
+            let tag = event.target
+            event.target.remove()
+        } */
+        // Solución 1:
+        /*         const listaDeEtiquetasLIs = document.querySelectorAll('li');
+                listaDeEtiquetasLIs.forEach(li =>
+                    li.addEventListener('click', () => li.remove())
+
+                ); */
+        // Solución 2:
+        /*     const listaDeEtiquetasLIs = document.querySelectorAll('li');
+            listaDeEtiquetasLIs.forEach(li =>
+                li.addEventListener('click', borrarElemento)
+
+            );
+
+            function borrarElemento(event) {
+                //this.remove();
+                event.target.remove();
+            } */
+        // Solución 3:
+        /* 
+                const listado = document.querySelector('ul');
+
+                listado.addEventListener('click', (event) => event.target.remove()); */
+        //solución 4(la mejor)
+        const listado = document.querySelector('ul');
+
+        listado.addEventListener('mouseover', (event) => {
+        if (event.target.tagName === "LI") {
+            event.target.remove();}
+        });
+    
+    </script>
+</body>
+
+</html>

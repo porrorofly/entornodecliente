@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Añadir eventListener</h1>
+    <p>Crear una funcion que devuelva por consola un saludo. Añade dicha funcion con addEventListener al pulsar un botón,una imagen,un texto dentro de un parrafo
+    </p>
+
+    <div id="contenedor">
+        <button id="1">Dime</button>
+        <img src="foto.jpg" id="2">
+        <p id="3"> Lalala</p>
+        <a href="eventos.html" id="4">aaaaaaa
+        </a>
+    </div>
+
+
+    <p></p>
+    <script>
+        const boton = document.getElementById('1')
+        const boton2 = document.getElementById('2')
+            // const container = document.getElementById('contenedor');
+        const boton3 = document.getElementById('3')
+        const boton4 = document.getElementById('4')
+        boton3.addEventListener('click', mia)
+        boton.addEventListener('click', mia)
+        boton2.addEventListener('mouseover', mia)
+        boton2.addEventListener('click', mia)
+            // container.addEventListener('click', mia);
+
+        function mia(event) {
+            event.preventDefault()
+            console.log('saludo')
+        }
+    </script>
+</body>
+
+</html>
