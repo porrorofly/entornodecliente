@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Propagación</h1>
+    <section>
+        <h1>Seccion</h1>
+        <article>
+            <h2>Article</h2>
+            <div>
+                <h3>Div</h3>
+                <button>Button</button>
+            </div>
+        </article>
+    </section>
+    <script>
+        document.querySelector('section').addEventListener('click',(event)=> console.log("Accion de section"),true)
+        document.querySelector('article').addEventListener('click',(event)=> console.log("Accion del article"),true)
+        document.querySelector('div').addEventListener('click',(event)=> console.log("Accion del div"),true)
+        document.querySelector('button').addEventListener('click',(event)=> {console.log("Accion del button")
+        event.stopPropagation,true})
+    </script>
+</body>
+</html>

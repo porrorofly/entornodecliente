@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Teclado</h1>
+    <h2>Tecla pulsada: <span id="key-press"></span></h2>
+    <p>Escribe tu nombre:
+        <input type="text" name="nombre">
+    </p>
+    <script>
+        const spanKeyPress=document.getElementById('key-press')
+        window.addEventListener('keydown',(event)=>{
+            event.preventDefault()
+            spanKeyPress.textContent=event.key
+            console.log("Control: ", event.ctrlKey,"Alt: ",event.altKey)
+            if(event.key==="t" && event.ctrlKey){
+                alert("Atajo teclado personalizado")
+                
+            }
+
+        })
+        const inputNombre=document.getElementsByName('nombre')[0]
+        inputNombre.addEventListener('change', (event)=>{
+            inputNombre.value=inputNombre.value.toUpperCase()
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .like{
+        background-color: #ccf;
+
+    }
+    .delete{
+        background-color: fcc;
+    }
+</style>
+<body>
+    <h1>Eliminar desde boton</h1>
+    <section>
+        <article><h2>Mi articulo</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae odit illum itaque quasi dolores animi, maxime neque velit rem vel necessitatibus molestiae, a ex quia at ab modi, doloremque sequi.</p>
+        <div>
+            <button class="Like">Me gusta</button>
+            <span class="Like">0</span>
+            <button class="delete">Eliminar</button>
+        </div></article>
+         <article><h2>Mi articulo2</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae odit illum itaque quasi dolores animi, maxime neque velit rem vel necessitatibus molestiae, a ex quia at ab modi, doloremque sequi.</p>
+        <div>
+            <button class="Like">Me gusta</button>
+            <button class="delete">Eliminar</button>
+        </div></article>
+        
+    </section>
+    <script>
+        const btnDeleteList=document.querySelectorAll('button.delete')
+        btnDeleteList.forEach(btn=>
+            btn.addEventListener('click',deleteArticle)
+        )
+        function deleteArticle(event){
+            
+                let article=event.currentTarget.closest('article')
+                article.remove()
+        }
+        const btnLikeList=document.querySelectorAll('button.like')
+        btnLikeList.forEach(bth=>btn.addEventListener('click',incrementLikeArticle))
+
+        function incrementLikeArticle(){
+            let article=event.currentTarget.closest('article')
+            let spanLike=article.querySelector('span.like')
+            spanLike.textContent++
+        }
+    </script>
+</body>
+</html>
