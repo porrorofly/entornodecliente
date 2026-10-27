@@ -12,17 +12,19 @@
             margin: 30px auto;
             padding: 0 20px;
             color: #333;
+            background-color: #f5e9e9;
         }
 
         h1 {
             text-align: center;
-            color: #005a9c;
+            color: #317056;
             border-bottom: 1px solid #ddd;
             padding-bottom: 12px;
         }
 
         h2 {
-            color: #005a9c;
+            color: #317056;
+            text-decoration: underline ;
             border-bottom: 1px solid #ddd;
             padding-bottom: 8px;
             margin-top: 30px;
@@ -54,7 +56,7 @@
         }
 
         thead th {
-            background-color: #005a9c;
+            background-color: #317056;
             color: white;
             text-align: left;
         }
@@ -62,6 +64,7 @@
         td {
             text-align: right;
             font-family: "Courier New", monospace;
+            background-color: #f5ece3;
         }
 
         th:first-child,
@@ -79,7 +82,7 @@
             background-color: #f4f4f4;
         }
 
-        /* Ids */
+        /* ID */
         #formulario-producto {
             display: flex;
             gap: 15px;
@@ -87,7 +90,7 @@
         }
 
         #insertar {
-            background-color: #007bff;
+            background-color: darkgreen;
             color: white;
             border: none;
             border-radius: 4px;
@@ -97,7 +100,7 @@
         }
 
         #insertar:hover {
-            background-color: #0062cc;
+            background-color: #5a9b85;
         }
 
         #resumen-factura td {
@@ -124,7 +127,7 @@
         }
 
         .grupo_impuestos {
-            background-color: #f4f4f4;
+            background-color: #dfcaca;
             padding: 12px;
             border-radius: 4px;
             text-align: center;
@@ -149,6 +152,9 @@
 
         .eliminar:hover {
             background-color: #a71d2a;
+        }
+        #total{
+            color: #a71d2a;
         }
     </style>
 </head>
@@ -181,9 +187,13 @@
         <h2>Seleccionar Impuestos</h2>
         <div class="grupo_impuestos">
             <label><input type="radio" name="tasa" value="0.05"> 5%</label>
+            <label><input type="radio" name="tasa" value="0.07">  7%</label>
             <label><input type="radio" name="tasa" value="0.10"> 10%</label>
             <label><input type="radio" name="tasa" value="0.15"> 15%</label>
             <label><input type="radio" name="tasa" value="0.20" checked> 20%</label>
+            <label><input type="radio" name="tasa" value="0.21"> 21%</label>
+            <label><input type="radio" name="tasa" value="personalizado"> Tu procentaje:
+            <input type="number" name="procentaje" id="procentaje" min="0" step="any"></label>
         </div>
     </section>
 
@@ -232,15 +242,27 @@
         const botonInsertar = document.getElementById("insertar");
         const listaProductos = document.getElementById("lista-productos");
         const radiosTasa = document.querySelectorAll('input[name="tasa"]');
+        const procentaje = document.getElementById('procentaje');
+
 
         function formatoMoneda(numero) {
             return numero.toLocaleString("es-ES", { style: "currency", currency: "EUR" });
         }
 
         function obtenerTasa() {
-            return parseFloat(document.querySelector('input[name="tasa"]:checked').value);
-        }
+            const radioPersonalizado = document.querySelector('input[name="tasa"][value="personalizado"]');
 
+            if (radioPersonalizado.checked) {
+                const valorPersonalizado = parseFloat(procentaje.value);
+                if (!isNaN(valorPersonalizado) && valorPersonalizado >= 0) {
+                    return valorPersonalizado / 100;
+                }
+                return 0; 
+            }
+
+            const radioChecked = document.querySelector('input[name="tasa"]:checked');
+            return radioChecked ? parseFloat(radioChecked.value) : 0;
+        }
         function recalcularTotales() {
             let subtotal = 0;
             listaProductos.querySelectorAll("tr").forEach(function (fila) {
@@ -251,7 +273,7 @@
             const impuestos = subtotal * tasa;
 
             document.getElementById("subtotal").textContent = formatoMoneda(subtotal);
-            document.getElementById("tasa-texto").textContent = (tasa * 100) + "%";
+            document.getElementById("tasa-texto").textContent = Number((tasa * 100).toFixed(2)) + "%";
             document.getElementById("impuestos").textContent = formatoMoneda(impuestos);
             document.getElementById("total").textContent = formatoMoneda(subtotal + impuestos);
         }
@@ -299,7 +321,10 @@
         radiosTasa.forEach(function (radio) {
             radio.addEventListener("change", recalcularTotales);
         });
-
+        procentaje.addEventListener("input", function() {
+            document.querySelector('input[name="tasa"][value="personalizado"]').checked = true;
+            recalcularTotales();
+        });
         recalcularTotales();
     </script>
 </body>

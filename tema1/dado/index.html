@@ -32,7 +32,6 @@
         <p>El juego consiste en:</p>
         <ul>
             <li>Al iniciarse se lanza el dado y se muestra.</li>
-            <li>Se parte con un dinero inicial de 10.</li>
             <li>
                 Se parte con un dinero inicial de 10.
                 <ul>
@@ -55,15 +54,19 @@
 
         <h1>Juego Dado</h1>
 
-        <img src="./dice1.gif" alt="1" />
+        <img src="images/dice1.gif" alt="1" />
 
 
     </div>
     <div id="dinero">
-        <h2>Dinero disponible: <span id="dinero-disponible">10</span></h2>
+        <h2>Dinero acumulado: <span id="dinero-disponible">10</span></h2>
         <p>Apuesta: <input type="number" id="apuesta" min="1" value="1" /></p>
         <h2>Resultado: <span id="resultado-texto"></span></h2>
         <button onclick="play()">Sacaré un número mayor</button>
+        <p></p>
+        <button onclick="playMenor()">Sacaré un número menor</button>
+        <p></p>
+        <button onclick="playIgual()">Sacaré un número igual</button>
     </div>
     <div id="resultado">
 
