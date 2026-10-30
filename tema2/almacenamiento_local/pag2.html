@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario 2</title>
+</head>
+<body>
+    <h2><span id="Nombre"></span></h2>
+    <h3><span id="Edad"></span></h3>
+    <button id="Eliminar">Eliminar datos</button>
+
+    <a href="pag1.html">Volver a inicio</a>
+
+
+    <script>
+        const nombre2=document.getElementById('Nombre')
+        const edad2=document.getElementById('Edad')
+        const eliminar=document.getElementById('Eliminar')
+
+        function cargar(){
+            const nombre=localStorage.getItem('nombre')
+            const edad=localStorage.getItem('edad')
+
+            nombre2.textContent = (nombre && nombre.trim() !== '') ? nombre : 'Anónimo';
+            edad2.textContent = (edad && edad.trim() !== '') ? edad : 'Sin edad';
+        
+        }
+        cargar()
+        eliminar.addEventListener('click', () => {
+            localStorage.removeItem('nombre');
+            localStorage.removeItem('edad');
+            cargar();
+        });
+    </script>
+</body>
+</html>

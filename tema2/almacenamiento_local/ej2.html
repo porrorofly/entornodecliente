@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="formulario">
+        Color:<input type="color" name="color" id="color" value="#000000"><br>
+        Tamaño <input type="range" name="size" id="size" min="8" max="30" value="15">
+        <button type="submit" id="guardar">guardar</button>
+    </form>
+    <div id="texto">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore culpa dolores saepe. Consequuntur nostrum accusantium quae aliquam, repellendus similique perspiciatis iusto ipsum commodi voluptatum ipsa. Eius dolore debitis quisquam aliquam.
+    </div>
+    
+    <script>
+        const color = document.getElementById("color");
+        const size = document.getElementById("size");
+        const texto = document.getElementById('texto');
+        const form = document.getElementById('formulario'); // Corregido el nombre de la variable
+
+        // Cargar datos guardados al iniciar la página
+        window.addEventListener('DOMContentLoaded', () => {
+            const colorGuardado = localStorage.getItem('colorPers');
+            const sizeGuardado = localStorage.getItem('SizePers');
+
+            if (colorGuardado) {
+                color.value = colorGuardado;
+                texto.style.color = colorGuardado;
+            }
+
+            if (sizeGuardado) {
+                size.value = sizeGuardado;
+                texto.style.fontSize = sizeGuardado + 'px';
+            }
+        });
+
+        // Cambios en tiempo real (usando las variables correctas: color y size)
+        color.addEventListener('input', () => {
+            texto.style.color = color.value;
+        });
+
+        size.addEventListener('input', () => {
+            texto.style.fontSize = size.value + 'px';
+        });    
+
+        // Guardar datos al enviar el formulario (usando 'form')
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            localStorage.setItem('colorPers', color.value);
+            localStorage.setItem('SizePers', size.value);
+            alert('Configuración guardada correctamente.');
+        });
+    </script>
+</body>
+</html>
