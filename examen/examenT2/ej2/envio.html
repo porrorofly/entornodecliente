@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Envíos - RápidoExpress</title>
+
+    <style>
+        body { font-family: sans-serif; background-color: #f4f6f8; }
+        h1 { color: #1b4f72; }
+        .error { color: red; display: block; margin-top: 5px; font-size: 0.9em; }
+        fieldset { margin-bottom: 15px; border: 1px solid #ccc; background: white; }
+        legend { font-weight: bold; color: #117a65; }
+        label { display: inline-block; width: 170px; font-weight: bold; }
+        
+        #resumen p { font-size: 1.05em; margin: 8px 0; }
+        .dato-resaltado { font-weight: bold; color: #1b4f72; font-size: 1.2em; }
+        
+    </style>
+    
+</head>
+<body>
+    <h1>📦 RápidoExpress — Gestor de Envíos</h1>
+
+    <form id="envioForm" method="post" action="realizado.html">
+        <fieldset>
+            <legend>1. Datos del Envío</legend>
+            <p>
+                <label for="codigo">Código de Envío:</label>
+                <input id="codigo" name="codigo" pattern="[A-Z]{3}-[0-9]{4|6}" placeholder="Ej: ENV-2026" required>
+            </p>
+            <p>
+                <label for="email">Email Cliente:</label>
+                <input id="email" type="email" name="email" placeholder="cliente@correo.com" required>
+            </p>
+            <p>
+                <label for="peso">Peso Paquete (kg):</label>
+                <input id="peso" type="number" min="1"  name="peso" required>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>2. Transporte y Opciones</legend>
+            <p>
+                <label for="vehiculo">Vehículo:</label>
+                <select id="vehiculo" name="vehiculo" required>
+                    <option value="" disabled selected>Cargando vehículos...</option>
+                </select>
+            </p>
+            <p>
+                <label for="fragil">Mercancía Frágil (+5 €):</label>
+                <input id="fragil">
+                <span class="error" id="errorFragil"></span>
+            </p>
+            <p>
+                <label for="ecologico">Envío Ecológico (0 €):</label>
+                <input id="ecologico">
+                <span class="error" id="errorEcologico"></span>
+            </p>
+        </fieldset>
+
+        <fieldset id="resumen">
+            <legend>📊 Resumen del Pedido</legend>
+            <p>Tarifa base: <span id="tarifaBase">0.00</span> €</p>
+            <p>Suplemento por peso: <span id="suplementoPeso">0.00</span> €</p>
+            <p>Suplemento frágil: <span id="suplementoFragil">0.00</span> €</p>
+            <hr>
+            <p>COSTE TOTAL: <span id="costeTotal" class="dato-resaltado">0.00</span> €</p>
+        </fieldset>
+
+        <p>
+            <button>Confirmar Envío</button>
+        </p>
+    </form>
+</body>
+</html>

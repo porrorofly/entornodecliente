@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiCartera — Control de Gastos</title>
+    <style>
+        body { font-family: sans-serif; max-width: 520px; margin: 30px auto; background: #f5f7fa; }
+        h1 { color: #2c3e50; }
+        form, #panelLista { background: white; padding: 15px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px; }
+        label { display: inline-block; width: 100px; font-weight: bold; }
+        p { margin: 10px 0; }
+        ul { list-style: none; padding: 0; }
+        li { display: flex; justify-content: space-between; align-items: center; padding: 8px; border-bottom: 1px solid #eee; }
+        .gasto-alto { color: #c0392b; font-weight: bold; background-color: #fdecea; }
+        .total { font-size: 1.2em; font-weight: bold; color: #2c3e50; }
+        .btn-eliminar { margin-left: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>💶 MiCartera</h1>
+
+    <form id="gastoForm">
+        <p>
+            <label for="concepto">Concepto:</label>
+            <input type="text" id="concepto" placeholder="Ej: Compra semanal" required>
+        </p>
+        <p>
+            <label for="importe">Importe (€):</label>
+            <input type="number" id="importe" min="0.01" step="0.01" required>
+        </p>
+        <p>
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" required>
+                <option value="Alimentación">Alimentación</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Ocio">Ocio</option>
+                <option value="Otros">Otros</option>
+            </select>
+        </p>
+        <button type="submit">Añadir Gasto</button>
+    </form>
+
+    <div id="panelLista">
+        <p class="total">Total gastado: <span id="totalGastos">0.00</span> €</p>
+        <ul id="listaGastos"></ul>
+        <button type="button" id="btnVaciar">Borrar todos los gastos</button>
+    </div>
+
+</body>
+</html>
